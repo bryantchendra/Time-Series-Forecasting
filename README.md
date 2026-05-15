@@ -20,9 +20,6 @@ venv\Scripts\activate          # Windows
 
 # 3. Install dependencies
 pip install -r requirements.txt
-
-# 4. (Later) Add your EIA API key
-# Copy .env.example to .env and paste your key in
 ```
 
 ## How to run
