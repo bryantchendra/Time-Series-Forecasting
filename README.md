@@ -6,6 +6,19 @@ Time-series forecasting for Qantas Group's joint fuel + AUDUSD hedging strategy.
 
 Qantas Group (ASX: QAN). FY25 disclosures show ~77–81% of forward fuel hedged via Brent + Singapore Jet swaps + option structures. Exposure has two axes: USD jet fuel price × AUDUSD. Both modelled.
 
+## Understanding This Project
+
+I have written notes to help understand the mechanics of this project, feel free to have a read on my docs: https://docs.google.com/document/d/1HDZ3NPP81vr3wCvXuIAobjvXj-oU06_HYwr5Q1-iUyk/edit?usp=sharing\
+The docs I've written covers how hedging works for airlines, how our problem should be solved, etc.\
+
+Qantas also releases public information about their financial statement, we can use this to guide our decisions and to make this project more "realistic", so we could use their financial statements as a basis for our project:
+
+- Annual Reports landing page: https://investor.qantas.com/investors/?page=annual-reports
+- FY25 Annual Report (full): https://investor.qantas.com/FormBuilder/_Resource/_module/doLLG5ufYkCyEPjF1tpgyw/file/annual-reports/2025-Annual-Report.pdf
+- FY25 Results Supplementary Presentation (this is where the explicit hedge ratio tables live — go straight to slides on fuel): https://investor.qantas.com/FormBuilder/_Resource/_module/doLLG5ufYkCyEPjF1tpgyw/file/2025FY/QAN-FY25-Supplementary-Presentation.pdf
+- Results Centre (historical half-year and full-year results): https://investor.qantas.com/investors/?page=result-centre
+- Data Book (historical operating + financial data in spreadsheet form — useful for fuel consumption history): https://investor.qantas.com/investors/?page=data-book
+
 ## Setup
 
 ```bash
