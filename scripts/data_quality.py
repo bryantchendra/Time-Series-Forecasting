@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import yfinance as yf
+from curl_cffi import requests as curl_requests
+
+YF_SESSION = curl_requests.Session(impersonate="chrome")
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
@@ -30,6 +33,7 @@ def _adj_close(symbol: str) -> pd.Series:
     df = yf.download(
         symbol, start=START, end=END,
         auto_adjust=False, progress=False, group_by="column",
+        session=YF_SESSION,
     )
     if df is None or df.empty:
         return pd.Series(dtype=float, name=symbol)
