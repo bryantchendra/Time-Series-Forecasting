@@ -2,7 +2,7 @@
 
 Time-series forecasting for Qantas Group's joint fuel + AUDUSD hedging strategy.
 
-## Persona
+## Project Scope
 
 Qantas Group (ASX: QAN). FY25 disclosures show ~77–81% of forward fuel hedged via Brent + Singapore Jet swaps + option structures. Exposure has two axes: USD jet fuel price × AUDUSD. Both modelled.
 
