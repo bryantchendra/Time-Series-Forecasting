@@ -7,7 +7,9 @@
 **Due:** Fri 29 May 2026
 **Window:** 14 calendar days · 10 weekdays + 4 weekend days
 
-> **Changes from v1:** persona locked to Qantas (real hedger with public disclosures); data sources expanded to Yahoo + EIA + FRED (EIA needed for exogenous inventory data, USGC Jet, and refinery utilisation); basket revised (dropped JETS, KRBN, XLE; added cracks, AUDUSD, USGC Jet); methodology deepened (forward curve baseline, VECM with Johansen, DCC-GARCH, Diebold-Mariano tests, CRPS/pinball loss); frequency-dynamics subsection added for rubric coverage. Operational structure, hand-off protocol, and role split kept from v1.
+> **Changes from v1:** persona locked to Qantas (real hedger with public disclosures); data sources expanded to Yahoo + EIA (EIA needed for exogenous inventory data, USGC Jet, and refinery utilisation); basket revised (dropped JETS, KRBN, XLE; added cracks, AUDUSD, USGC Jet); methodology deepened (forward curve baseline, VECM with Johansen, DCC-GARCH, Diebold-Mariano tests, CRPS/pinball loss); frequency-dynamics subsection added for rubric coverage. Operational structure, hand-off protocol, and role split kept from v1.
+
+> **Day 0 execution notes (Fri 15 May, end-of-day):** M1 finished all Day 0 + Day 1 data-acquisition deliverables in one day. Yahoo pulls (15 tickers), EIA pulls (4 series via manual XLS download instead of API), cracks/spreads, three parquet outputs, tracking-gap diagnostic, and acceptance check — all done. Yahoo's `yfinance` block (now active in 2025–26) was mitigated with a `curl_cffi` browser-impersonating session. Day 1 freed up for deeper EDA scaffolding (originally Day 2 work).
 
 ---
 
@@ -81,7 +83,7 @@ Pulled into a parallel `exogenous_features.parquet` and used as ARIMAX regressor
 
 | Member | Primary role |
 |---|---|
-| **M1** | Data acquisition (Yahoo + EIA + FRED), tracking-gap diagnostic, EDA scaffolding, figures |
+| **M1** | Data acquisition (Yahoo + EIA), tracking-gap diagnostic, EDA scaffolding, figures |
 | **M2** | Simple/explainable model (ETS, ARIMA, naive, forward-curve baseline) + frequency dynamics analysis + metrics framework |
 | **M3** | Max-performance model (Auto-ARIMA, ARIMA-X, SARIMA, VECM with Johansen, univariate GARCH, **DCC-GARCH**) + Diebold-Mariano testing |
 | **M4** | Creative model (Kalman dynamic hedge ratio) + 4-strategy backtest engine + CRPS/pinball loss computation |
@@ -93,10 +95,14 @@ Pulled into a parallel `exogenous_features.parquet` and used as ARIMAX regressor
 
 | Day | Date | Owner | Deliverable |
 |---|---|---|---|
-| 0 | **Fri 15 May** | All 5 | Plan handover + kickoff. M1 starts Yahoo pulls (15 tradable/FX/index tickers). M5 sets up repo + notebook scaffold. |
-| 1 | **Sat 16 May** | M1 | EIA pulls (USGC Jet, distillates, crude inventories, refinery util via `eiapy` or HTTP). Compute cracks/spreads. Output `data/processed/prices.parquet` (15 series) + `exogenous_features.parquet`. Run tracking-gap diagnostic (USO↔CL=F, UNG↔NG=F, UGA↔RB=F). Missingness + outlier report. |
+| 0 | **Fri 15 May** | All 5 | Plan handover + kickoff. **M1 completed Yahoo + EIA + cracks/spreads + tracking-gap diagnostic + acceptance check (originally Day 1 deliverables).** Repo set up under new home `Time-Series-Forecasting/` with portable paths, `.gitignore`, README. |
+| 1 | **Sat 16 May** | M1 | **Outlier-tagging report** (winsorisation flags + IQR-based outliers per series). **Structural-break event log** (COVID 2020, Ukraine 2022, Iran 2024–25 timestamps for visual overlay). Start ADF/KPSS scaffolding (originally Day 2 work). |
 
 **Checkpoint 1 (end of Sat):** data is locked. Everyone codes against `prices.parquet` from here. No re-pulls.
+
+**Data mechanics actually used (vs v2 plan):**
+- Yahoo: pulled via `yfinance` with a `curl_cffi.requests.Session(impersonate="chrome")` to bypass Yahoo's 2025–26 yfinance block. Without this, every download returns empty.
+- EIA: 4 series (USGC Jet daily, crude/distillate stocks weekly, refinery util weekly) **downloaded as XLS files** from EIA's web bulk-download pages and committed to `data/raw/`. No API key required. Refresh weekly by re-downloading. Mitigates Risk #3 entirely.
 
 ---
 
@@ -104,7 +110,7 @@ Pulled into a parallel `exogenous_features.parquet` and used as ARIMAX regressor
 
 | Day | Date | Owner | Deliverable |
 |---|---|---|---|
-| 2 | **Sun 17 May** | M1 + M5 | M1: ADF + KPSS stationarity; STL decomposition on all series; vol-clustering (squared-return ACF + ARCH-LM); structural breaks (COVID 2020, Ukraine 2022, Iran 2024–25). M5 starts drafting Dataset & Business Context. |
+| 2 | **Sun 17 May** | M1 + M5 |  ADF + KPSS stationarity; STL decomposition on all series; vol-clustering (squared-return ACF + ARCH-LM); structural breaks (COVID 2020, Ukraine 2022, Iran 2024–25). M5 starts drafting Dataset & Business Context. |
 | 3 | **Mon 18 May** | M1 + M5 | M1: **Johansen cointegration tests** on Brent–WTI, HO–Brent, HO–RBOB, jet–Brent; cross-correlation lag analysis; rolling correlation heatmaps. EDA figures finalised (8–10 figures). EDA narrative draft handed to M5. |
 
 **Checkpoint 2 (end of Mon):** EDA section essentially written. Stylised facts confirmed and documented.
@@ -171,12 +177,13 @@ All members work against `data/processed/prices.parquet`. Hand-off artifacts sta
 
 1. **Kalman hedge-ratio convergence on noisy series (Day 5–7)** — fallback to OU mean-reversion on cracks, or rolling-window OLS hedge ratio. **Decision deadline: end of Day 7 (Fri 22 May).**
 2. **DCC-GARCH convergence on 13-series basket** — multivariate GARCH is hard to fit on large baskets. Fallback to univariate GARCH per series + rolling-window OLS covariance for dynamic hedge ratios. **Decision deadline: end of Day 6 (Thu 21 May).**
-3. **EIA API rate limits or downtime (Day 0–1)** — mitigation: pull on Day 1, cache aggressively, never re-pull mid-project. Have a fallback static CSV download from EIA's web bulk-download page in case the API misbehaves.
+3. **EIA data refresh staleness** — mitigated by choosing manual XLS download over the API. No API key dependency, no rate limits, files committed to `data/raw/`. Residual risk: EIA's daily USGC Jet series has a ~1-week reporting lag, so the most recent rows in `prices.parquet` are forward-filled. Bear this in mind during EDA — visible as constant runs in the last few days of the series. Refresh = re-download 4 XLS files from `eia.gov/dnav/pet/hist_xls/`.
 4. **VECM rank ambiguity (Johansen returns conflicting trace vs eigenvalue ranks) (Day 6)** — fallback to bivariate VECM on jet–Brent crack only; report robustness across rank choices.
 5. **Forward-curve gaps in Yahoo (CL2/CL3/CL6/CL12 sometimes missing)** — mitigation: forward-fill within a contract, splice across contracts with rollover adjustment; if it fails, synthesize from cost-of-carry using `^IRX`.
 6. **Backtest engine bugs (Day 4–6)** — sanity test on Day 4: spot cost = realised_price × volume × FX (no model). This must match exactly before any hedge logic is layered on.
 7. **15-page squeeze (Day 11–12)** — each section has a fixed page budget; appendix-style detail lives in the notebook (notebook is unbounded).
-8. **"Run all cells" failure on Day 13** — clean-env dry-run is on Day 12, NOT Day 13. Buffer is built in.
+8. **Yahoo Finance blocks `yfinance` (encountered Day 0)** — Yahoo has been actively rate-limiting / blocking `yfinance` since 2025. Symptom: empty DataFrames with no error message, or `YFRateLimitError`. **Mitigation in place:** `curl_cffi.requests.Session(impersonate="chrome")` passed to all `yf.download` and `yf.Ticker` calls in both the notebook and `data_quality.py`. If a teammate hits empty downloads, verify `curl_cffi` is installed and that the session is being used.
+9. **"Run all cells" failure on Day 13** — clean-env dry-run is on Day 12, NOT Day 13. Buffer is built in.
 
 ---
 
@@ -186,6 +193,7 @@ All members work against `data/processed/prices.parquet`. Hand-off artifacts sta
 - **Sat 23 May** — half-buffer for model debugging
 - **M5 owns integration** from Day 11 so writing and code never block each other
 - **One full day (Thu 28 May)** for reproducibility — not crammed onto submission day
+- **Day 0 came in ahead of schedule** — M1 freed up Day 1 for outlier report + structural-break log + ADF/KPSS scaffolding (originally Day 2)
 
 ---
 
@@ -194,7 +202,8 @@ All members work against `data/processed/prices.parquet`. Hand-off artifacts sta
 | Hand-off | Artifact path |
 |---|---|
 | M1 → all | `data/processed/prices.parquet` (15 series, daily, aligned) |
-| M1 → all | `data/processed/exogenous_features.parquet` (EIA inventories, FX, rates, VIX) |
+| M1 → all | `data/processed/returns.parquet` (log returns of `prices.parquet`) |
+| M1 → all | `data/processed/exogenous_features.parquet` (EIA inventories, rates, VIX) |
 | M1 → all | `data/quality/tracking_gap_report.csv` |
 | M2/M3/M4 → M5 | `forecasts/<model_name>/<series>_<horizon>.parquet` (point + quantile forecasts) |
 | M3 → M4 | `models/dcc_garch/cov_matrices.parquet` (time-varying covariance for dynamic hedge ratios) |
@@ -274,7 +283,7 @@ Standardise these hand-offs on Day 4 morning to save friction all week.
 | Area | v1 | v2 |
 |---|---|---|
 | Persona | Generic airline/freight | **Qantas Group with public disclosures** |
-| Data sources | Yahoo only | Yahoo + EIA + FRED |
+| Data sources | Yahoo only | Yahoo + EIA |
 | Jet fuel | `HO=F` proxy only | `HO=F` proxy **+ USGC Jet from EIA** |
 | FX | DXY context only | **AUDUSD as primary forecast target** |
 | Cracks/spreads | Not computed | Jet–Brent, HO–Brent, Brent–WTI |
@@ -291,4 +300,4 @@ Standardise these hand-offs on Day 4 morning to save friction all week.
 
 ---
 
-*End of Option A v2 timeline.*
+*End of Option A v2 timeline. Last updated: end-of-day Fri 15 May 2026 with Day 0 execution notes.*
