@@ -8,7 +8,7 @@ Qantas Group (ASX: QAN). FY25 disclosures show ~77–81% of forward fuel hedged 
 
 ## Understanding This Project
 
-I have written notes to help understand the mechanics of this project, feel free to have a read on my docs: https://docs.google.com/document/d/1HDZ3NPP81vr3wCvXuIAobjvXj-oU06_HYwr5Q1-iUyk/edit?usp=sharing\
+I have written notes to help understand the mechanics of this project, feel free to have a read on my docs: https://docs.google.com/document/d/1HDZ3NPP81vr3wCvXuIAobjvXj-oU06_HYwr5Q1-iUyk/edit?usp=sharing
 The docs I've written covers how hedging works for airlines, how our problem should be solved, etc.\
 
 Qantas also releases public information about their financial statement, we can use this to guide our decisions and to make this project more "realistic", so we could use their financial statements as a basis for our project:
