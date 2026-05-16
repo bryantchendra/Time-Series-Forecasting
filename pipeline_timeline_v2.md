@@ -28,7 +28,7 @@
 
 ---
 
-## 2. Series Basket (16 series — same nature, +2 FX auxiliary)
+## 2. Series Basket (15 series — same nature, +2 FX auxiliary)
 
 ### 2.1 Tradable hedge instruments (Yahoo Finance)
 | # | Instrument | Ticker | Role |
@@ -39,10 +39,9 @@
 | 4 | RBOB Gasoline | `RB=F` | Refined product, refinery economics |
 | 5 | Henry Hub Natural Gas | `NG=F` | Refinery operating cost driver |
 | 6 | Dutch TTF Gas | `TTF=F` | European energy context |
-| 7 | ICE Gasoil | `GAS=F` | **Middle distillate closer to jet than HO** for Singapore-routed cargoes (per strategy brief) |
-| 8 | US Oil Fund | `USO` | ETF alternative to `CL=F` hedge |
-| 9 | US Natural Gas Fund | `UNG` | ETF alternative to `NG=F` hedge |
-| 10 | US Gasoline Fund | `UGA` | ETF alternative to `RB=F` hedge |
+| 7 | US Oil Fund | `USO` | ETF alternative to `CL=F` hedge |
+| 8 | US Natural Gas Fund | `UNG` | ETF alternative to `NG=F` hedge |
+| 9 | US Gasoline Fund | `UGA` | ETF alternative to `RB=F` hedge |
 
 ### 2.2 Physical jet benchmark (EIA, daily)
 | # | Series | Source | Role |
@@ -185,6 +184,7 @@ All members work against `data/processed/prices.parquet`. Hand-off artifacts sta
 7. **15-page squeeze (Day 11–12)** — each section has a fixed page budget; appendix-style detail lives in the notebook (notebook is unbounded).
 8. **Yahoo Finance blocks `yfinance` (encountered Day 0)** — Yahoo has been actively rate-limiting / blocking `yfinance` since 2025. Symptom: empty DataFrames with no error message, or `YFRateLimitError`. **Mitigation in place:** `curl_cffi.requests.Session(impersonate="chrome")` passed to all `yf.download` and `yf.Ticker` calls in both the notebook and `data_quality.py`. If a teammate hits empty downloads, verify `curl_cffi` is installed and that the session is being used.
 9. **"Run all cells" failure on Day 13** — clean-env dry-run is on Day 12, NOT Day 13. Buffer is built in.
+10. **Free-data gaps known and accepted (not a true critical-path risk, documented for transparency):** ICE Gasoil and Singapore Jet Kerosene aren't reliably available on free Yahoo/EIA — Yahoo's `GAS=F` returns empty. We use NYMEX HO (`HO=F`) and USGC Jet (EIA) respectively — both academically defensible substitutes per Adams & Gerner (2012) and the strategy brief itself. Acknowledge once in the EDA "data limitations" paragraph; don't dwell on it.
 
 ---
 
@@ -202,7 +202,7 @@ All members work against `data/processed/prices.parquet`. Hand-off artifacts sta
 
 | Hand-off | Artifact path |
 |---|---|
-| M1 → all | `data/processed/prices.parquet` (16 series, daily, aligned) |
+| M1 → all | `data/processed/prices.parquet` (15 series, daily, aligned) |
 | M1 → all | `data/processed/returns.parquet` (log returns of `prices.parquet`) |
 | M1 → all | `data/processed/exogenous_features.parquet` (EIA inventories, rates, VIX) |
 | M1 → all | `data/quality/tracking_gap_report.csv` |
