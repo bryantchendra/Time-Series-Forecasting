@@ -55,7 +55,7 @@ Read from `data/processed/`. Never from `data/raw/`. Three files, all indexed by
 
 | File | Columns | Used by |
 |---|---|---|
-| `prices.parquet` | **16 series** — 10 tradable (WTI, Brent, HO, RBOB, HH_NG, TTF, Gasoil, USO, UNG, UGA) + USGCJet + 3 cracks/spreads (BrentWTI, JetBrent, HOBrent) + AUDUSD + DXY | M2 EDA, M3 forecast targets |
+| `prices.parquet` | **15 series** — 9 tradable (WTI, Brent, HO, RBOB, HH_NG, TTF, USO, UNG, UGA) + USGCJet + 3 cracks/spreads (BrentWTI, JetBrent, HOBrent) + AUDUSD + DXY | M2 EDA, M3 forecast targets |
 | `returns.parquet` | Log returns of `prices.parquet` columns | M3 modelling, M4 backtesting |
 | `exogenous_features.parquet` | **7 features** — RF, TNX, OilVol, VIX, CrudeStocks, DistStocks, RefineryUtil | M3 exogenous regressors |
 
@@ -90,6 +90,12 @@ Time-Series-Forecasting/
 - Refinery utilisation (weekly): https://www.eia.gov/dnav/pet/hist_xls/WPULEUS3w.xls
 
 EIA updates weekly (Wednesday afternoons US time).
+
+## Known data limitations
+
+- **ICE Gasoil** is recommended in the strategy brief as a middle-distillate closer to jet fuel than HO for Singapore-routed cargoes, but it's not reliably available on free Yahoo Finance (the `GAS=F` ticker returns empty). NYMEX Heating Oil (`HO=F`) serves the same methodological role per Adams & Gerner (2012). If a teammate needs ICE Gasoil specifically, they'll need to source it from ICE's own bulk download (paid) or a vendor.
+- **Brent forward curve (1M, 3M, 6M, 12M maturities)** — not pulled by this notebook. M2 picks these up on Day 4 of the pipeline timeline.
+- **Singapore Jet Kerosene** — also not on Yahoo free. USGC Jet (EIA) is the fallback per the brief.
 
 ## Yahoo rate-limit note
 
