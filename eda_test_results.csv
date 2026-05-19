@@ -1,0 +1,10 @@
+series,test_name,statistic,p_value,critical_values,null,conclusion
+white_noise,ADF,-7.23682056125953,1.9298542473544643e-10,"{""1%"": -3.4529449243622383, ""5%"": -2.871489553425686, ""10%"": -2.572071437887033}",unit root (non-stationary),stationary
+random_walk,ADF,-0.5417589653375288,0.8836067186897374,"{""1%"": -3.4524113009049935, ""5%"": -2.8712554127251764, ""10%"": -2.571946570731871}",unit root (non-stationary),non-stationary
+trend_series,ADF,-18.67556263718023,0.0,"{""1%"": -3.989370928165566, ""5%"": -3.425276382171434, ""10%"": -3.1357422321841852}",unit root (non-stationary),stationary
+white_noise,KPSS(c),0.1347086245396275,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary
+random_walk,KPSS(c),1.5108499125436674,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary
+white_noise,ARCH-LM(12),8.833620085185512,0.7170719811818946,"{""1%"": 26.216967305535853, ""5%"": 21.02606981748307, ""10%"": 18.549347786703244}",no ARCH effects (homoskedastic),no ARCH effects
+arch_series,ARCH-LM(12),58.12729421568494,4.942704797666335e-08,"{""1%"": 26.216967305535853, ""5%"": 21.02606981748307, ""10%"": 18.549347786703244}",no ARCH effects (homoskedastic),ARCH effects present
+"[""x"", ""y""]",Johansen-trace,"{""r<=0"": 128.22328975646008, ""r<=1"": 0.6290444040196282}",,"{""r<=0"": {""10%"": 13.4294, ""5%"": 15.4943, ""1%"": 19.9349}, ""r<=1"": {""10%"": 2.7055, ""5%"": 3.8415, ""1%"": 6.6349}}","cointegration rank <= r (sequentially for r = 0, 1, ...)",estimated rank = 1 at alpha=0.05
+seasonal_series,STL,"{""trend_strength"": 0.8707465495418785, ""seasonal_strength"": 0.9619407779605719}",,,,strong trend; strong seasonality
