@@ -1,0 +1,61 @@
+series,test_name,statistic,p_value,critical_values,null,conclusion,step
+Brent (level),ADF,-2.262381723657116,0.184387698450803,"{""1%"": -3.432785102598709, ""5%"": -2.8626158484711364, ""10%"": -2.5673427101989885}",unit root (non-stationary),non-stationary,step2
+Brent (level),KPSS(c),3.280215694001055,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+Brent (return),ADF,-13.050510541703414,2.146916272345796e-24,"{""1%"": -3.4327869175173453, ""5%"": -2.8626166499894, ""10%"": -2.5673431369296353}",unit root (non-stationary),stationary,step2
+Brent (return),KPSS(c),0.044988580086317335,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+WTI (level),ADF,-2.298479648067413,0.17245878414378896,"{""1%"": -3.4327860097199814, ""5%"": -2.862616249081039, ""10%"": -2.5673429234848517}",unit root (non-stationary),non-stationary,step2
+WTI (level),KPSS(c),3.4573947066570483,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+WTI (return),ADF,-9.819917198032105,5.372221298779973e-17,"{""1%"": -3.4327951182428817, ""5%"": -2.8626202716505262, ""10%"": -2.567345065113533}",unit root (non-stationary),stationary,step2
+WTI (return),KPSS(c),0.04373392962398301,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+HO (level),ADF,-1.6718655896091985,0.44566333712120026,"{""1%"": -3.432794204326531, ""5%"": -2.862619868040959, ""10%"": -2.567344850230434}",unit root (non-stationary),non-stationary,step2
+HO (level),KPSS(c),3.6640760518600772,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+HO (return),ADF,-14.672546719168333,3.249517817898593e-27,"{""1%"": -3.4327814808594526, ""5%"": -2.8626142490094613, ""10%"": -2.5673418586412}",unit root (non-stationary),stationary,step2
+HO (return),KPSS(c),0.05425464596496102,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+RBOB (level),ADF,-2.2717288399154407,0.18124813363147263,"{""1%"": -3.432792378541877, ""5%"": -2.862619061725927, ""10%"": -2.567344420945645}",unit root (non-stationary),non-stationary,step2
+RBOB (level),KPSS(c),3.285713247988538,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+RBOB (return),ADF,-10.743332570793322,2.7819446704946962e-19,"{""1%"": -3.432789644973554, ""5%"": -2.8626178545085774, ""10%"": -2.56734377821929}",unit root (non-stationary),stationary,step2
+RBOB (return),KPSS(c),0.04066255811855935,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+HH_NG (level),ADF,-3.1177575620834066,0.02526665589465684,"{""1%"": -3.4327905554828577, ""5%"": -2.8626182566141165, ""10%"": -2.5673439923015366}",unit root (non-stationary),stationary,step2
+HH_NG (level),KPSS(c),0.8740952302044168,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+HH_NG (return),ADF,-23.190185978016764,0.0,"{""1%"": -3.432776068405479, ""5%"": -2.862611858714308, ""10%"": -2.5673405860421004}",unit root (non-stationary),stationary,step2
+HH_NG (return),KPSS(c),0.03586575234985503,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+TTF (level),ADF,-2.4479189239450294,0.12866568556499108,"{""1%"": -3.4333137461257826, ""5%"": -2.862849291493819, ""10%"": -2.5674669993735244}",unit root (non-stationary),non-stationary,step2
+TTF (level),KPSS(c),1.245040993443939,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+TTF (return),ADF,-22.871442992586818,0.0,"{""1%"": -3.433285804182706, ""5%"": -2.862836953679977, ""10%"": -2.567460430332402}",unit root (non-stationary),stationary,step2
+TTF (return),KPSS(c),0.09078137870044789,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+USO (level),ADF,-1.308156491830402,0.6254324961139972,"{""1%"": -3.4327860097199814, ""5%"": -2.862616249081039, ""10%"": -2.5673429234848517}",unit root (non-stationary),non-stationary,step2
+USO (level),KPSS(c),1.3188638644106045,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+USO (return),ADF,-12.109805041277388,1.931066167820386e-22,"{""1%"": -3.4327869175173453, ""5%"": -2.8626166499894, ""10%"": -2.5673431369296353}",unit root (non-stationary),stationary,step2
+USO (return),KPSS(c),0.1828909984845397,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+UNG (level),ADF,-1.474210124235253,0.5462284709880159,"{""1%"": -3.432792378541877, ""5%"": -2.862619061725927, ""10%"": -2.567344420945645}",unit root (non-stationary),non-stationary,step2
+UNG (level),KPSS(c),6.601159178188369,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+UNG (return),ADF,-22.275243297853855,0.0,"{""1%"": -3.432776068405479, ""5%"": -2.862611858714308, ""10%"": -2.5673405860421004}",unit root (non-stationary),stationary,step2
+UNG (return),KPSS(c),0.06673266981135523,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+UGA (level),ADF,0.99854487515989,0.9942505715402269,"{""1%"": -3.432792378541877, ""5%"": -2.862619061725927, ""10%"": -2.567344420945645}",unit root (non-stationary),non-stationary,step2
+UGA (level),KPSS(c),6.676507222907405,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+UGA (return),ADF,-9.756978102274422,7.742720919414906e-17,"{""1%"": -3.4327951182428817, ""5%"": -2.8626202716505262, ""10%"": -2.567345065113533}",unit root (non-stationary),stationary,step2
+UGA (return),KPSS(c),0.13363063379049653,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+USGCJet (level),ADF,-1.5764578397973192,0.49540778226014065,"{""1%"": -3.4327914666720445, ""5%"": -2.8626186590197875, ""10%"": -2.5673442065435954}",unit root (non-stationary),non-stationary,step2
+USGCJet (level),KPSS(c),3.3070091816028127,0.01,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,non-stationary,step2
+USGCJet (return),ADF,-13.483076992667137,3.2129418339694577e-25,"{""1%"": -3.432784196152773, ""5%"": -2.8626154481593598, ""10%"": -2.5673424970718686}",unit root (non-stationary),stationary,step2
+USGCJet (return),KPSS(c),0.05445321016287917,0.1,"{""10%"": 0.347, ""5%"": 0.463, ""2.5%"": 0.574, ""1%"": 0.739}",level-stationary,level-stationary,step2
+Brent (return),ARCH-LM(5),166.47276226796674,4.126056718496693e-34,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+Brent (return),ARCH-LM(10),266.62779757874284,1.7176229705248428e-51,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+WTI (return),ARCH-LM(5),494.32278846726075,1.3416465454602972e-104,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+WTI (return),ARCH-LM(10),565.5647101537518,4.17778831754472e-115,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+HO (return),ARCH-LM(5),220.71627181641276,1.0435910962542124e-45,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+HO (return),ARCH-LM(10),263.51718623610924,7.765308382026369e-51,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+RBOB (return),ARCH-LM(5),387.36292598839924,1.5687883894124811e-81,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+RBOB (return),ARCH-LM(10),436.9643640138954,1.258444927048007e-87,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+HH_NG (return),ARCH-LM(5),112.6458417865276,1.1302429314339218e-22,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+HH_NG (return),ARCH-LM(10),147.72906620961035,1.0924641059830251e-26,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+TTF (return),ARCH-LM(5),292.07766952123256,5.054280197338336e-61,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+TTF (return),ARCH-LM(10),345.8111047140424,3.08462297150549e-68,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+USO (return),ARCH-LM(5),282.8182357622641,4.93717953286203e-59,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+USO (return),ARCH-LM(10),363.9819572851254,4.284578236467342e-72,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+UNG (return),ARCH-LM(5),121.73644809014914,1.345469233877826e-24,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+UNG (return),ARCH-LM(10),204.71069632330645,1.6788222592364575e-38,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+UGA (return),ARCH-LM(5),612.7509017290135,3.553870424834943e-130,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+UGA (return),ARCH-LM(10),682.6440190042604,3.336453632331917e-140,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
+USGCJet (return),ARCH-LM(5),239.48327218080865,9.908974650998342e-50,"{""1%"": 15.086272469388987, ""5%"": 11.070497693516351, ""10%"": 9.236356899781123}",no ARCH effects (homoskedastic),ARCH effects present,step2
+USGCJet (return),ARCH-LM(10),290.5070852458475,1.5758875389906067e-56,"{""1%"": 23.209251158954356, ""5%"": 18.307038053275146, ""10%"": 15.987179172105265}",no ARCH effects (homoskedastic),ARCH effects present,step2
