@@ -1,0 +1,24 @@
+| ticker          | friendly_name                                  | category    | frequency          | inception   | last_obs   |   n_obs |   pct_missing | yahoo_symbol   |
+|:----------------|:-----------------------------------------------|:------------|:-------------------|:------------|:-----------|--------:|--------------:|:---------------|
+| HOBrent_crack   | Heating oil–Brent crack                        | crack       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | (derived/EIA)  |
+| JetBrent_crack  | Jet fuel–Brent crack                           | crack       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | (derived/EIA)  |
+| Brent           | Brent crude (front-month)                      | crude       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | BZ=F           |
+| WTI             | WTI crude (front-month)                        | crude       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | CL=F           |
+| UGA             | United States Gasoline Fund                    | etf         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | UGA            |
+| UNG             | United States Natural Gas Fund                 | etf         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | UNG            |
+| USO             | United States Oil Fund                         | etf         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | USO            |
+| CrudeStocks     | US crude oil inventories (EIA)                 | fundamental | weekly→daily ffill | 2016-01-01  | 2026-05-15 |    2706 |             0 | (derived/EIA)  |
+| DistStocks      | US distillate inventories (EIA)                | fundamental | weekly→daily ffill | 2016-01-01  | 2026-05-15 |    2706 |             0 | (derived/EIA)  |
+| RefineryUtil    | US refinery utilization rate (EIA)             | fundamental | weekly→daily ffill | 2016-01-01  | 2026-05-15 |    2706 |             0 | (derived/EIA)  |
+| AUDUSD          | AUD/USD exchange rate                          | fx          | daily              | 2016-01-01  | 2026-05-15 |    2706 |             0 | AUDUSD=X       |
+| DXY             | US Dollar Index                                | fx          | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | DX-Y.NYB       |
+| HH_NG           | Henry Hub natural gas                          | gas         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | NG=F           |
+| TTF             | Dutch TTF natural gas                          | gas         | daily              | 2017-10-23  | 2026-05-15 |    2235 |             0 | TTF=F          |
+| HO              | NY Harbor heating oil                          | product     | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | HO=F           |
+| RBOB            | RBOB gasoline                                  | product     | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | RB=F           |
+| USGCJet         | US Gulf Coast jet fuel                         | product     | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | (derived/EIA)  |
+| RF              | 3-month T-bill yield (CBOE ^IRX, % p.a.)       | rates       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | ^IRX           |
+| TNX             | 10-year Treasury yield (CBOE ^TNX, % p.a. ×10) | rates       | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | ^TNX           |
+| BrentWTI_spread | Brent–WTI spread                               | spread      | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | (derived/EIA)  |
+| OilVol          | CBOE crude oil volatility index (^OVX)         | vol         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | ^OVX           |
+| VIX             | CBOE volatility index (^VIX)                   | vol         | daily              | 2016-01-04  | 2026-05-15 |    2705 |             0 | ^VIX           |
